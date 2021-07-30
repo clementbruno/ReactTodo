@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import TodoContext from "../context/TodoContext";
 
-function Filters({ filterOutCompletedTodos }) {
+function Filters() {
+  const { filterOutCompletedTodos } = useContext(TodoContext);
+
   return (
     <div className="left-align bottom20 filter">
       Non completed

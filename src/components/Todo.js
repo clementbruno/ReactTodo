@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import TodoContext from "../context/TodoContext";
 
-function Todo({ todo, toggleCompleteTodo }) {
+function Todo({ todo }) {
+  const { toggleCompleteTodo } = useContext(TodoContext);
   return (
     <div className={`subCard ${todo.completed && "subCard--active"}`}>
       {todo.title}

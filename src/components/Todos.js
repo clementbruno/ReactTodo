@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Todo from "./Todo";
 import Filters from "./Filters";
+import TodoContext from "../context/TodoContext";
 
-function Todos({ todos, toggleCompleteTodo, filterOutCompletedTodos }) {
+function Todos() {
+  const { todos, filteredOutTodos } = useContext(TodoContext);
+  const displayableTodos =
+    filteredOutTodos.length > 0 ? filteredOutTodos : todos;
+
   return (
     <div className="card">
-      <Filters filterOutCompletedTodos={filterOutCompletedTodos} />
-      {todos.map((todo) => {
-        return (
-          <Todo
-            todo={todo}
-            key={todo.id}
-            toggleCompleteTodo={toggleCompleteTodo}
-          />
-        );
+      <Filters />
+      {displayableTodos.map((todo) => {
+        return <Todo todo={todo} key={todo.id} />;
       })}
     </div>
   );

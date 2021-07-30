@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import TodoContext from "../context/TodoContext";
 
-function AddTodoForm({ addTodo }) {
+function AddTodoForm() {
   const [title, setTitle] = useState("");
+  const { addTodo } = useContext(TodoContext);
 
   const handleChange = (e) => {
     setTitle(e.target.value);
